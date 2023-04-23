@@ -1,0 +1,88 @@
+<div class="jumbotron">
+  <div class="container">
+    <section>
+      <p>
+        The following data visualizations use data from the
+        <a href="https://www.kaggle.com/datasets/hasibalmuzdadid/global-air-pollution-dataset"
+          >Global Air Pollution Dataset</a
+        >. The dataset offers geolocated information from 23463 cities on key pollutants that impact both indoor and
+        outdoor environments, including Nitrogen Dioxide (NO2), Ozone (O3), Carbon Monoxide (CO), and Particulate Matter
+        (PM2.5). The data is organized by country and city, providing AQI values and categories for each pollutant. By
+        visualizing this data, users can gain insights into the severity of air pollution in various locations,
+        understand the potential health risks associated with each pollutant, and identify areas where improvement is
+        needed.
+      </p>
+      <p>
+        I cannot guarantee the correctness or completeness of the information provided in this data. The data is sourced
+        from a third-party platform, Kaggle.com, and I am not responsible for any inaccuracies, errors, or omissions
+        that may be present.
+      </p>
+    </section>
+    <section>
+      <h1 class="display-4">Overall AQI category for all cities in dataset</h1>
+      <canvas id="pieChart"></canvas>
+      <br />
+      <ul>
+        <li><strong>Good:</strong> Air quality is satisfactory, posing little or no risk.</li>
+        <li><strong>Moderate:</strong> Air quality is acceptable, but sensitive individuals may be at risk.</li>
+        <li>
+          <strong>Unhealthy for Sensitive Groups:</strong> Sensitive groups may experience health effects, while the
+          general public is less likely to be affected.
+        </li>
+        <li>
+          <strong>Unhealthy:</strong> Health effects may be experienced by some of the general public, and more serious
+          effects for sensitive groups.
+        </li>
+        <li>
+          <strong>Very Unhealthy:</strong> Health risks increase for everyone, with more severe impacts on sensitive
+          groups.
+        </li>
+      </ul>
+      <i>
+        <a href="https://www.airnow.gov/aqi/aqi-basics/" target="_blank"
+          >More information about Air Quality Index (AQI)</a
+        >
+      </i>
+    </section>
+    <section>
+      <h1 class="display-4">AQ values for selected cities</h1>
+      <canvas id="barChart"></canvas>
+    </section>
+    <section>
+      <h1 class="display-4">What are the pollutants?</h1>
+      <p>
+        <strong>Nitrogen Dioxide (NO2)</strong> is a colorless gas with a pungent odor. It is a major component of smog
+        and is formed by the reaction of nitrogen oxides with oxygen in the presence of sunlight. NO2 is a respiratory
+        irritant and can cause coughing, wheezing, and difficulty breathing. It can also cause lung inflammation and
+        aggravate asthma. NO2 is also a precursor to the formation of ozone and particulate matter.
+      </p>
+      <p>
+        <strong>Ozone (O3)</strong> is a colorless gas with a pungent odor. It is a major component of smog and is
+        formed by the reaction of nitrogen oxides with oxygen in the presence of sunlight. O3 is a respiratory irritant
+        and can cause coughing, wheezing, and difficulty breathing. It can also cause lung inflammation and aggravate
+        asthma. O3 is also a precursor to the formation of ozone and particulate matter.
+      </p>
+      <p>
+        <strong>Carbon Monoxide (CO)</strong> is a colorless, odorless, and tasteless gas. It is a byproduct of
+        incomplete combustion of carbon-containing fuels, such as gasoline, natural gas, wood, and coal. CO is a
+        respiratory irritant and can cause coughing, wheezing, and difficulty breathing. It can also cause lung
+        inflammation and aggravate asthma. CO is also a precursor to the formation of ozone and particulate matter.
+      </p>
+      <p>
+        <strong>Particulate Matter (PM2.5)</strong> is a complex mixture of extremely small particles and liquid
+        droplets. PM2.5 is a respiratory irritant and can cause coughing, wheezing, and difficulty breathing. It can
+        also cause lung inflammation and aggravate asthma. PM2.5 is also a precursor to the formation of ozone and
+        particulate matter.
+      </p>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const pieCtx = document.getElementById('pieChart')
+      new Chart(pieCtx, <%- JSON.stringify(viewData.pieChartConfig) %>)
+
+      const barCtx = document.getElementById('barChart')
+      new Chart(barCtx, <%- JSON.stringify(viewData.stackBarConfig) %>)
+    </script>
+  </div>
+</div>
